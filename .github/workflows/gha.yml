@@ -1,0 +1,27 @@
+name: benchmarking
+on:  [push, pull_request]
+
+jobs:
+  linux:
+    name: benchmarking
+    runs-on: ubuntu-latest
+    env:
+      HOST_WORKDIR:   /home/runner/work/benchmarking/benchmarking
+      WORKDIR:        utils/check-license
+      LICENSE_TAG:    BSD-3-Clause
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run ansible linter
+        uses: ansible/ansible-lint-action@v4.1.0
+        with:
+          args: "-p"
+          override-deps: |
+            ansible==2.7
+          targets: "ansible-playbook/*"
+
+      - name: Check the license
+        uses: skx/github-action-tester@master
+        with: 
+          script: cd $WORKDIR && ./check-headers.sh $HOST_WORKDIR $LICENSE_TAG
