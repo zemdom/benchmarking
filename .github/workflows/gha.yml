@@ -14,11 +14,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run ansible linter
-        uses: ansible/ansible-lint-action@v4.1.0
+        uses: ansible/ansible-lint-action@master
         with:
           args: "-p"
-          override-deps: |
-            ansible==2.7
+          override-deps: ansible==2.7
           targets: "ansible-playbook/*"
 
       - name: Check the license
