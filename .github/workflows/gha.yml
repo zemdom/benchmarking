@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HOST_WORKDIR:   /home/runner/work/benchmarking/benchmarking
-      WORKDIR:        utils/check-license
+      WORKDIR:        utils/check_license
       LICENSE_TAG:    BSD-3-Clause
     steps:
       - name: Checkout code
