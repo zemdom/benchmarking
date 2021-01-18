@@ -16,9 +16,7 @@ jobs:
       - name: Run ansible linter
         uses: ansible/ansible-lint-action@master
         with:
-          args: "-p"
-          override-deps: ansible==2.7
-          targets: "ansible-playbook/*"
+          args: "-p ansible-playbook/*"
 
       - name: Check the license
         uses: skx/github-action-tester@master
