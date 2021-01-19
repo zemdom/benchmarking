@@ -6,7 +6,6 @@ jobs:
     name: benchmarking
     runs-on: ubuntu-latest
     env:
-      HOST_WORKDIR:   /home/runner/work/benchmarking/benchmarking
       WORKDIR:        utils/check_license
       LICENSE_TAG:    BSD-3-Clause
     steps:
@@ -21,4 +20,4 @@ jobs:
       - name: Check the license
         uses: skx/github-action-tester@master
         with: 
-          script: cd $WORKDIR && ./check-headers.sh $HOST_WORKDIR $LICENSE_TAG
+          script: $WORKDIR/check-headers.sh $GITHUB_WORKSPACE $LICENSE_TAG
