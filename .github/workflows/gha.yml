@@ -17,11 +17,10 @@ jobs:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install file -y
 
+      - name: Check license headers
+        run: $HOST_WORKDIR/utils/check_license/check-headers.sh $HOST_WORKDIR $LICENSE_TAG
+
       - name: Run ansible linter
         uses: ansible/ansible-lint-action@master
         with:
           args: "-p"
-
-      # execute test script in default location .github/run-tests.sh
-      - name: Run tests - check license headers
-        uses: skx/github-action-tester@master
