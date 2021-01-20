@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install packages
-        run: sudo apt-get install file
+        run: apt-get update && apt-get install file -y
 
       - name: Run ansible linter
         uses: ansible/ansible-lint-action@master
